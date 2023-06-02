@@ -9,9 +9,9 @@ vim.g.loaded_netrwPlugin = 1
 
 -- IMPORTS
 require ('vars')
-require ('opts')
-require ('keys')
 require ('plug')
+require ('keys')
+require ('opts')
 
 -- PLUGINS
 require('nvim-autopairs').setup{}
@@ -26,4 +26,6 @@ require('lualine').setup {
 -- }
 
 end
+
+          opt = false
 

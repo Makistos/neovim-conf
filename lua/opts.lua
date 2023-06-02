@@ -12,10 +12,6 @@ opt.signcolumn = "yes"           -- str:  Show the sign column
 opt.encoding = 'utf8'            -- str:  String encoding to use
 opt.fileencoding = 'utf8'        -- str:  File encoding to use
 
--- [[ Theme ]]
-opt.syntax = "ON"                -- str:  Allow syntax highlighting
-opt.termguicolors = true         -- bool: If term supports ui color then enable
-vim.cmd('colorscheme wombat_lush')     -- cmd:  Set colorscheme
 
 -- [[ Search ]]
 opt.ignorecase = true            -- bool: Ignore case in search patterns
@@ -38,5 +34,13 @@ opt.splitbelow = true            -- bool: Place new window below the current one
 -- [[ Command timeout ]]
 opt.timeoutlen = 200
 
+-- [[ Clipboard ]]
+opt.clipboard = 'unnamedplus'
+
 -- [[ vim-gitgutter ]]
 vim.g.gitgutter_highlight_linenrs = 1
+
+-- [[ Theme ]]
+opt.syntax = "ON"                -- str:  Allow syntax highlighting
+opt.termguicolors = true         -- bool: If term supports ui color then enable
+vim.cmd('colorscheme wombat_lush')     -- cmd:  Set colorscheme

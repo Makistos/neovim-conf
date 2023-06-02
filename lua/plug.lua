@@ -1,11 +1,8 @@
 -- [[ plug.lua ]]
--- Plugins needed in terminal (VSCode has similar features built in)
 
 return require('packer').startup(function(use)
     if not vim.g.vscode then
-      use {
-          'nvim-tree/nvim-web-devicons'
-      }
+      use { 'nvim-tree/nvim-web-devicons' }
       use {                                              -- filesystem navigation
         'nvim-tree/nvim-tree.lua',
         requires = 'nvim-tree/nvim-web-devicons'        -- filesystem icons
@@ -16,9 +13,10 @@ return require('packer').startup(function(use)
           'nvim-lualine/lualine.nvim',
           requires = { 'nvim-tree/nvim-web-devicons', opt = true}
       }
+      use { 'rktjmp/lush.nvim' }
       use { 
           'ViviDboarder/wombat.nvim',
-          requires = 'rktjmp/lush.nvim',
+          requires = 'rktjmp/lush.nvim'
       }
       --use { 'tpope/vim-fugitive' }
       use { 'airblade/vim-gitgutter'}

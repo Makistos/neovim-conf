@@ -19,7 +19,7 @@ if not vim.g.vscode then
 require('nvim-tree').setup()
 require('lualine').setup {
     options = {
-        theme = 'wombat_lush'
+        theme = 'auto'
     }
 }
 -- require('vim-gitgutter').setup {
@@ -29,3 +29,8 @@ end
 
           opt = false
 
+if vim.g.vscode then
+    -- VSCode extension
+else
+    -- Ordinary Neovim
+end

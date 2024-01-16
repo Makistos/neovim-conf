@@ -43,4 +43,4 @@ vim.g.gitgutter_highlight_linenrs = 1
 -- [[ Theme ]]
 opt.syntax = "ON"                -- str:  Allow syntax highlighting
 opt.termguicolors = true         -- bool: If term supports ui color then enable
-vim.cmd('colorscheme wombat_lush')     -- cmd:  Set colorscheme
+vim.cmd('colorscheme wombat_classic')     -- cmd:  Set colorscheme

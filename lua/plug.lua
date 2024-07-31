@@ -34,7 +34,7 @@ return require('packer').startup(function(use)
     dap.adapters.cppdbg = {
         id = 'cppdbg',
         type = 'executable',
-        command = '/home/poutima/.vscode/extensions/ms-vscode.cpptools-1.15.4-linux-x64/debugAdapters/bin/OpenDebugAD7',
+        command = '/home/mep/.vscode/extensions/ms-vscode.cpptools-1.18.5-linux-x64/debugAdapters/bin/OpenDebugAD7',
 	options = {
 		detached = false
 	}

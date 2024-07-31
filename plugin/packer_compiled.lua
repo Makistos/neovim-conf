@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/poutima/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/poutima/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/poutima/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/poutima/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/poutima/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/mep/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/mep/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/mep/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/mep/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/mep/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -76,62 +76,62 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["beacon.nvim"] = {
     loaded = true,
-    path = "/home/poutima/.local/share/nvim/site/pack/packer/start/beacon.nvim",
+    path = "/home/mep/.local/share/nvim/site/pack/packer/start/beacon.nvim",
     url = "https://github.com/DanilaMihailov/beacon.nvim"
   },
   ["copilot.vim"] = {
     loaded = true,
-    path = "/home/poutima/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    path = "/home/mep/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
   ["git-blame.nvim"] = {
     loaded = true,
-    path = "/home/poutima/.local/share/nvim/site/pack/packer/start/git-blame.nvim",
+    path = "/home/mep/.local/share/nvim/site/pack/packer/start/git-blame.nvim",
     url = "https://github.com/f-person/git-blame.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "/home/poutima/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    path = "/home/mep/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["lush.nvim"] = {
     loaded = true,
-    path = "/home/poutima/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    path = "/home/mep/.local/share/nvim/site/pack/packer/start/lush.nvim",
     url = "https://github.com/rktjmp/lush.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
-    path = "/home/poutima/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    path = "/home/mep/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
-    path = "/home/poutima/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    path = "/home/mep/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/poutima/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    path = "/home/mep/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["vim-commentary"] = {
     loaded = true,
-    path = "/home/poutima/.local/share/nvim/site/pack/packer/start/vim-commentary",
+    path = "/home/mep/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
   },
   ["vim-gitgutter"] = {
     loaded = true,
-    path = "/home/poutima/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
+    path = "/home/mep/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
   },
   ["vim-startify"] = {
     loaded = true,
-    path = "/home/poutima/.local/share/nvim/site/pack/packer/start/vim-startify",
+    path = "/home/mep/.local/share/nvim/site/pack/packer/start/vim-startify",
     url = "https://github.com/mhinz/vim-startify"
   },
   ["wombat.nvim"] = {
     loaded = true,
-    path = "/home/poutima/.local/share/nvim/site/pack/packer/start/wombat.nvim",
+    path = "/home/mep/.local/share/nvim/site/pack/packer/start/wombat.nvim",
     url = "https://github.com/ViviDboarder/wombat.nvim"
   }
 }

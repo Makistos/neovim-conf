@@ -38,7 +38,7 @@ opt.timeoutlen = 200
 opt.clipboard = 'unnamedplus'
 
 -- [[ vim-gitgutter ]]
-vim.g.gitgutter_highlight_linenrs = 1
+-- vim.g.gitgutter_highlight_linenrs = 1
 
 -- [[ Theme ]]
 -- opt.syntax = "ON"                -- str:  Allow syntax highlighting

@@ -19,6 +19,7 @@ map('x', '<leader>p', [["_dP"]], {})
 if not vim.g.vscode then
 	map('n', '<F4>', ':Gitsigns toggle_signs<CR>', {silent = true})
     map('n', '<F5>', ":NvimTreeToggle<CR>", {silent = true})
+	map('n', '<C-p>', ":Telescope find_files<CR>", {silent = true})
 
     -- Debugger 
     -- map('n', '<F6>', ":DapContinue<CR>", {silent = true})

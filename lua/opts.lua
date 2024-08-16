@@ -37,9 +37,51 @@ opt.timeoutlen = 200
 -- [[ Clipboard ]]
 opt.clipboard = 'unnamedplus'
 
--- [[ vim-gitgutter ]]
--- vim.g.gitgutter_highlight_linenrs = 1
-
 -- [[ Theme ]]
 -- opt.syntax = "ON"                -- str:  Allow syntax highlighting
 -- opt.termguicolors = true         -- bool: If term supports ui color then enable
+
+require("mason").setup()
+require("mason-lspconfig").setup() -- { ensure_installed = {'pyright'}, }
+
+-- [[ LSP ]]
+local nvim_lsp = require 'lspconfig'
+local on_attach = function(_, bufnr)
+vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+local opts = { noremap = true, silent = true }
+end
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown' }
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+    },
+}
+
+-- Enable the following language servers
+local servers = { 'pyright' } -- 'clangd', 'pyright', 'gopls' }
+for _, lsp in ipairs(servers) do
+    nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+end
+
+require("bufferline").setup{
+    options = {
+        diagnostics = "nvim_lsp",
+    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      local icon = level:match("error") and " " or " "
+      return " " .. icon .. count
+    end
+    },
+}

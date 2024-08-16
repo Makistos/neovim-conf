@@ -83,8 +83,35 @@ return {
         vim.cmd("colorscheme arctic")
         end
     },
+    {
+        'williamboman/mason.nvim'
+    },
+    {
+        'williamboman/mason-lspconfig.nvim'
+    },
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.8',
 		dependencies = { 'nvim-lua/plenary.nvim',  'nvim-treesitter/nvim-treesitter'}
+    },
+    {
+        'onsails/lspkind.nvim'
+    },
+    {
+        'hrsh7th/nvim-cmp'
+    },
+    {
+        'hrsh7th/cmp-nvim-lsp'
+    },
+    {   
+        'neovim/nvim-lspconfig',
+        dependencies = {
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim'
+        },
+    },
+    {
+        'akinsho/bufferline.nvim', 
+        version = "*", 
+        dependencies = 'nvim-tree/nvim-web-devicons',
     }
 }

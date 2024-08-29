@@ -254,6 +254,38 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+        signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+        numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
+        linehl = true, -- Toggle with `:Gitsigns toggle_linehl`
+        word_diff = true, -- Toggle with `:Gitsigns toggle_word_diff`
+        watch_gitdir = {
+            interval = 1000,
+            follow_files = true,
+        },
+        attach_to_untracked = true,
+        current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+        current_line_blame_opts = {
+            virt_text = true,
+            virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+            delay = 500,
+            ignore_whitespace = false,
+        },
+        current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
+        sign_priority = 6,
+        update_debounce = 100,
+        status_formatter = nil, -- Use default
+        max_file_length = 40000, -- Disable if file is longer than this (in lines)
+        preview_config = {
+            -- Options passed to nvim_open_win
+            border = "single",
+            style = "minimal",
+            relative = "cursor",
+            row = 0,
+            col = 1,
+        },
+        yadm = {
+            enable = false,
+        },
     },
   },
 
@@ -908,7 +940,22 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
-
+	{
+      'nvim-neo-tree/neo-tree.nvim',
+      version = 'v3.x',
+      dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      },
+  },
+  {
+      'windwp/nvim-autopairs',
+      event = "InsertEnter",
+      config = true
+      -- use opts = {} for passing setup options
+      -- this is equalent to setup({}) function
+  },
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.

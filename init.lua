@@ -383,6 +383,12 @@ require('lazy').setup({
         cond = function()
           return vim.fn.executable 'make' == 1
         end,
+        defaults = {
+          file_ignore_patterns = {
+            "node_modules",
+            "app/static/images"
+          }
+        }
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
@@ -1000,5 +1006,6 @@ require('lazy').setup({
   },
 })
 
+vim.keymap.set('n', '<F5>', '<Cmd>Neotree toggle<CR>')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -13,11 +13,13 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
+-- Keybinds to make split navigation easier.
+--  Use CTRL+<hjkl> to switch between windows
 --  See `:help wincmd` for a list of all window commands
--- vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
--- vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
--- vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
--- vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Save with Ctrl-S
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Save buffer" })
@@ -28,3 +30,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Open file explorer tree
 vim.keymap.set("n", "<F5>", "<Cmd>Neotree toggle<CR>")
+
+-- For moving in location window
+vim.keymap.set("n", "<M-p>", "<Cmd>lprev<CR>", { desc = "Jump to previous item in location window", silent = true })
+vim.keymap.set("n", "<M-n>", "<Cmd>lnext<CR>", { desc = "Jump to next item in location window", silent = true })

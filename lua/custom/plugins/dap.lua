@@ -87,6 +87,7 @@ if not vim.g.vscode then
 			vim.keymap.set("n", "<leader>bst", dap.step_out, { desc = "Step out", silent = true })
 			vim.keymap.set("n", "<leader>bsb", dap.step_back, { desc = "Step back", silent = true })
 			vim.keymap.set("n", "<leader>brr", dap.restart, { desc = "Restart", silent = true })
+			vim.keymap.set("n", "<leader>brs", dap.close, { desc = "Stop", silent = true })
 
 			-- Dap UI keys
 			vim.keymap.set("n", "<leader>bu", dapui.toggle, { desc = "Toggle dap-ui", silent = true })

@@ -34,3 +34,8 @@ vim.keymap.set("n", "<F5>", "<Cmd>Neotree toggle<CR>")
 -- For moving in location window
 vim.keymap.set("n", "<M-p>", "<Cmd>lprev<CR>", { desc = "Jump to previous item in location window", silent = true })
 vim.keymap.set("n", "<M-n>", "<Cmd>lnext<CR>", { desc = "Jump to next item in location window", silent = true })
+
+vim.keymap.set("n", "<C-j>", "<Cmd>cn<CR>", { desc = "Jump to next issue", silent = true })
+vim.keymap.set("n", "<C-k>", "<Cmd>cp<CR>", { desc = "Jump to previous issue", silent = true })
+
+vim.keymap.set("n", "<leader>db", "<Cmd>bp|bd#<CR>", { desc = "Close current buffer", silent = true })

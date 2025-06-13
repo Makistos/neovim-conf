@@ -99,6 +99,8 @@ if not vim.g.vscode then
 					--  For example, in C this would take you to the header.
 					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
+					-- Open diagnostic (error/warning) as a float
+					map("<leader>cf", vim.diagnostic.open_float, "Open diagnostic [F]loat")
 					-- The following two autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.
 					--    See `:help CursorHold` for information about when this is executed

@@ -161,7 +161,7 @@ if not vim.g.vscode then
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				bashls = {},
-				awk_ls = {},
+				-- awk_ls = {},
 				-- jq-lsp = {}, --syntax error..?
 				pyright = {},
 				pylsp = {},
@@ -172,7 +172,7 @@ if not vim.g.vscode then
 				texlab = {},
 				ltex = {},
 				perlnavigator = {},
-				taplo = {}, --for TOML
+				-- taplo = {}, --for TOML
 				-- grammarly = {}, --TODO: setup db file
 
 				-- TODO setup for markdown?
@@ -182,7 +182,7 @@ if not vim.g.vscode then
 				-- programming language LSPs
 				clangd = {},
 				cmake = {},
-				rust_analyzer = {},
+				-- rust_analyzer = {},
 				-- zls = {},     --zig
 				-- asm_lsp = {}, --assembly
 				-- fortls = {},  --fortran
@@ -230,7 +230,7 @@ if not vim.g.vscode then
 			--
 			--  You can press `g?` for help in this menu.
 			require("mason").setup({
-				ensure_installed = {"lua_ls"}
+				ensure_installed = { "lua_ls" },
 			})
 
 			-- You can add other tools here that you want Mason to install

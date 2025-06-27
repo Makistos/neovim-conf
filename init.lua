@@ -42,6 +42,10 @@ require("lazy").setup({ import = "custom/plugins" }, {
 })
 
 vim.lsp.enable("clangd")
+vim.lsp.enable("pylsp")
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("cmake")
+vim.lsp.enable("bashls")
 
 vim.lsp.config["lua_ls"] = {
 	cmd = { "lua-language-server" },

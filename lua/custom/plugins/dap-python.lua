@@ -2,15 +2,19 @@ local function venv_bin_detection(tool)
 	local cwd = vim.loop.cwd()
 	if vim.fn.executable(cwd .. "/.venv/bin/" .. tool) == 1 then
 		return cwd .. "/.venv/bin/" .. tool
+	elseif vim.fn.executable(cwd .. "venv/bin/" .. tool) == 1 then
+		return cwd .. "/venv/bin/" .. tool
+	elseif vim.fn.executable("/usr/bin/" .. tool) == 1 then
+		return "/usr/bin/" .. tool
 	end
 	return tool
 end
 
 local function venv_python_path()
 	-- local cwd = vim.loop.cwd()
-	local where = venv_bin_detection("python")
+	local where = venv_bin_detection("python3")
 	if where == "python" then
-		return "/usr/bin/python"
+		return "/usr/bin/python3"
 	end
 	return where
 end

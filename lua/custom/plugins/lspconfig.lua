@@ -164,7 +164,20 @@ if not vim.g.vscode then
 				-- awk_ls = {},
 				-- jq-lsp = {}, --syntax error..?
 				pyright = {},
-				pylsp = {},
+				pylsp = {
+					settings = {
+						pylsp = {
+							plugins = {
+								rope_autoimport = { enabled = false },
+								rope_completion = { enabled = false },
+								rope_rename = { enabled = false },
+								isort = {
+									enabled = false,
+								},
+							},
+						},
+					},
+				},
 				-- LSPs for common files
 				html = {},
 				cssls = {},

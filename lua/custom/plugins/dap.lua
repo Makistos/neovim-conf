@@ -65,6 +65,21 @@ if not vim.g.vscode then
 					args = {},
 				},
 			}
+			dap.configurations.python = {
+				{
+					type = "python",
+					request = "attach",
+					name = "Attach to debugpy",
+					connect = {
+						host = "127.0.0.1",
+						port = 5678,
+					},
+					mode = "debug",
+					pathMappings = {
+						{ localRoot = vim.fn.getcwd(), remoteRoot = "/app" },
+					},
+				},
+			}
 			-- Dap keys
 			vim.keymap.set("n", "<F6>", dap.step_over, { desc = "Step over", silent = true })
 			vim.keymap.set("n", "<F7>", dap.step_into, { desc = "Step into", silent = true })

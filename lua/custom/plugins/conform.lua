@@ -8,15 +8,15 @@ if not vim.g.vscode then
 		cmd = { "ConformInfo" },
 		keys = {
 			{
-				"<leader>f",
+				"<leader>co",
 				function()
 					require("conform").format({ async = true, lsp_format = "never" })
 				end,
 				mode = "",
-				desc = "[F]ormat buffer",
+				desc = "F[o]rmat buffer",
 			},
 			{
-				"<leader>rp",
+				"<leader>cl",
 				"<cmd>RuffProject<cr>",
 				mode = "n",
 				desc = "Lint Python project with Ruff",
@@ -24,6 +24,34 @@ if not vim.g.vscode then
 		},
 
 		config = function()
+			require("conform").setup({
+				notify_on_error = false,
+				format_on_save = function(bufnr)
+					local ft = vim.bo[bufnr].filetype
+					local lsp_timeout, lsp_format_opt
+
+					if ft == "python" or ft == "lua" then
+						lsp_timeout = 1000
+						lsp_format_opt = "never"
+					else
+						lsp_timeout = 500
+						lsp_format_opt = "fallback"
+					end
+
+					return {
+						timeout_ms = lsp_timeout,
+						lsp_format = lsp_format_opt,
+					}
+				end,
+				formatters_by_ft = {
+					python = { "ruff_format" },
+					cpp = { "clang-format" },
+					c = { "clang-format" },
+					lua = { "stylua" },
+					-- python = { "isort", "black" }, -- optional sequential formatters
+				},
+
+			})
 			-- Register RuffProject command
 			vim.api.nvim_create_user_command("RuffProject", function()
 				local cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1] or vim.fn.getcwd()
@@ -38,36 +66,36 @@ if not vim.g.vscode then
 				end
 			end, { desc = "Run Ruff linter on the entire project and show results" })
 			-- Ruff fix command for current line or selected quickfix entry
+		vim.keymap.set("n", "cc", "<cmd>RuffProject<cr>", { desc = "Run Ruff check on project", silent = true })
 		end,
 
-		opts = {
-			notify_on_error = false,
-			format_on_save = function(bufnr)
-				local ft = vim.bo[bufnr].filetype
-				local lsp_timeout, lsp_format_opt
-
-				if ft == "python" or ft == "lua" then
-					lsp_timeout = 1000
-					lsp_format_opt = "never"
-				else
-					lsp_timeout = 500
-					lsp_format_opt = "fallback"
-				end
-
-				return {
-					timeout_ms = lsp_timeout,
-					lsp_format = lsp_format_opt,
-				}
-			end,
-			formatters_by_ft = {
-				python = { "black" },
-				cpp = { "clang-format" },
-				c = { "clang-format" },
-				lua = { "stylua" },
-				-- python = { "isort", "black" }, -- optional sequential formatters
-			},
-		},
-		vim.keymap.set("n", "cc", "<cmd>RuffProject<cr>", { desc = "Run Ruff check on project", silent = true })
+		-- opts = {
+		-- 	notify_on_error = false,
+		-- 	format_on_save = function(bufnr)
+		-- 		local ft = vim.bo[bufnr].filetype
+		-- 		local lsp_timeout, lsp_format_opt
+		--
+		-- 		if ft == "python" or ft == "lua" then
+		-- 			lsp_timeout = 1000
+		-- 			lsp_format_opt = "never"
+		-- 		else
+		-- 			lsp_timeout = 500
+		-- 			lsp_format_opt = "fallback"
+		-- 		end
+		--
+		-- 		return {
+		-- 			timeout_ms = lsp_timeout,
+		-- 			lsp_format = lsp_format_opt,
+		-- 		}
+		-- 	end,
+		-- 	formatters_by_ft = {
+		-- 		python = { "ruff_format" },
+		-- 		cpp = { "clang-format" },
+		-- 		c = { "clang-format" },
+		-- 		lua = { "stylua" },
+		-- 		-- python = { "isort", "black" }, -- optional sequential formatters
+		-- 	},
+		-- },
 	}
 end
 

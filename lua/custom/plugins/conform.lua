@@ -57,36 +57,30 @@ if not vim.g.vscode then
 						title = "Ruff",
 					},
 				},
-				c = {
-					{
-						cmd = function()
-							local file = vim.fn.expand("%:p")
-							return string.format("cppcheck --enable=all --suppress=missingIncludeSystem %s 2>&1", file)
-						end,
-						title = "Cppcheck",
-					},
-					{
-						cmd = function()
-							local file = vim.fn.expand("%:p")
-							local cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1] or vim.fn.getcwd()
-							return string.format("clang-tidy %s -p %s 2>&1", file, cwd)
-						end,
-						title = "Clang-Tidy",
-					},
-				},
 				cpp = {
 					{
 						cmd = function()
 							local file = vim.fn.expand("%:p")
-							return string.format("cppcheck --enable=all --suppress=missingIncludeSystem %s 2>&1", file)
+							local cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1] or vim.fn.getcwd()
+							return string.format(
+								"clang-tidy %s -p %s --quiet 2>&1 | sed 's/\\x1b\\[[0-9;]*m//g'",
+								file,
+								cwd
+							)
 						end,
-						title = "Cppcheck",
+						title = "Clang-Tidy",
 					},
+				},
+				c = {
 					{
 						cmd = function()
 							local file = vim.fn.expand("%:p")
 							local cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1] or vim.fn.getcwd()
-							return string.format("clang-tidy %s -p %s 2>&1", file, cwd)
+							return string.format(
+								"clang-tidy %s -p %s --quiet 2>&1 | sed 's/\\x1b\\[[0-9;]*m//g'",
+								file,
+								cwd
+							)
 						end,
 						title = "Clang-Tidy",
 					},
@@ -170,6 +164,11 @@ if not vim.g.vscode then
 				for _, linter in ipairs(ft_linters) do
 					table.insert(titles, linter.title)
 					local cmd = linter.cmd()
+					-- Set errorformat for clang-tidy (file:line:col: severity: message)
+					-- vim.opt.errorformat:prepend("%f:%l:%c: %trror: %m")
+					-- vim.opt.errorformat:prepend("%f:%l:%c: %tarning: %m")
+					-- vim.opt.errorformat:prepend("%f:%l:%c: %tote: %m")
+					-- vim.notify("Running: " .. cmd, vim.log.levels.INFO)
 					local output = vim.fn.systemlist(cmd)
 					for _, line in ipairs(output) do
 						if line ~= "" then
@@ -178,9 +177,12 @@ if not vim.g.vscode then
 					end
 				end
 
+				-- Use a simple errorformat that handles file:line:col: message
+				local efm = "%f:%l:%c: %m,%f:%l: %m,%f: %m"
 				vim.fn.setqflist({}, " ", {
 					title = "Lint [" .. table.concat(titles, ", ") .. "]",
 					lines = all_output,
+					efm = efm,
 				})
 
 				if #all_output > 0 then
